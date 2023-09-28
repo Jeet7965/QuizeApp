@@ -42,7 +42,7 @@ const questions = [
 ]
 let index = 0
 let total = questions.length;
-let right = 0
+let correct = 0
 let wrong = 0
 const quebox = document.getElementById('QueBox');
 const opt = document.querySelectorAll('.opt')
@@ -62,7 +62,7 @@ function submitqueAns() {
     const data = questions[index];
     const ans = getAnswer();
     if (ans==data.right) {
-        right++;
+        correct++;
     }
     else {
         wrong++;
@@ -72,12 +72,14 @@ function submitqueAns() {
     return;
 }
 const getAnswer = () => {
+    let answer;
     opt.forEach((input) => {
         if (input.checked) {
-            return input.value;
+            answer= input.value;
            
         }
-    })
+    });
+    return answer;
 }
 const reset = () => {
     opt.forEach((input) => {
@@ -88,7 +90,7 @@ const reset = () => {
 
 function EndQuize(){
     let final =document.getElementById('boxfinal');
-    final.innerHTML=`<h3> Thank you for playing quize</h3> <br> <h2> ${total}/${right} </h2>`
+    final.innerHTML=`<h3> Thank you for playing quize</h3> <br> <h2>otal Questions are ${total} and right answers is ${correct} and Wrong answer is ${wrong}. </h2>`
    
 }
 
